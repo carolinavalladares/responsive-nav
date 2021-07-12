@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root {
+  --color-header: #1f1f1e;
+  --color-text: #f1f2eb;
+}
+
+.header {
+  background-color: var(--color-header);
+  display: flex;
+  align-items: center;
+  padding: 1.5em;
+}
+
+.logo {
+  flex: 1;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-decoration: overline;
+}
+
+.nav {
+  flex: 2;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.nav-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.hamburger {
+  display: none;
+}
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+}
+
+@media only screen and (max-width: 550px) {
+  .nav {
+    position: fixed;
+    width: 200px;
+    top: 0;
+    bottom: 0;
+    right: -200px;
+    background-color: var(--color-header);
+    transition: right 0.3s ease-out;
+  }
+  .nav-list {
+    flex-direction: column;
+    height: 80%;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 25px;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease-out;
+  }
+  .line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text);
+    transform-origin: left;
+    transition: all 0.3s ease-out;
+  }
+
+  /*Hamburger Menu Animation*/
+
+  .hamburger.active {
+    margin-right: 60px;
+    transition: all 0.3s ease-out;
+  }
+  .hamburger.active .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .line:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  .hamburger.active .line:nth-child(3) {
+    transform: translateY(5px) rotate(-45deg);
+  }
+}
